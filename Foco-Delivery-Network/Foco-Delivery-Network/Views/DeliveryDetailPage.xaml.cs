@@ -82,7 +82,7 @@ namespace Foco_Delivery_Network.Views
         {
             var delivery = viewModel.Delivery;
 
-            delivery.TakenBySource = CrossFirebaseAuth.Current.Instance.CurrentUser.Uid; //TODO change to persistant structure?
+            delivery.TakenBySource = App.CurrentUser.Id;
 
             await viewModel.Update(delivery);
             ShowButtons();
