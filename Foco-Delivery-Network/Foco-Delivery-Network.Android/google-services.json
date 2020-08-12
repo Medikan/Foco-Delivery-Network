@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "798580476081",
+    "firebase_url": "https://focodeliveryproject.firebaseio.com",
+    "project_id": "focodeliveryproject",
+    "storage_bucket": "focodeliveryproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798580476081:android:22073be21cc691e9c4ba90",
+        "android_client_info": {
+          "package_name": "com.companyname.foco_delivery_network"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798580476081-2sbtpu2da5edf4gsa7br220trubumhqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1b0RhXFJ-LB6DfUnWCcH5JlvHGiFeAms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798580476081-2sbtpu2da5edf4gsa7br220trubumhqv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "798580476081-grjkka9ka5dnbqpu23jhj9rns0d0jefg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.companyname.Foco-Delivery-Network"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
