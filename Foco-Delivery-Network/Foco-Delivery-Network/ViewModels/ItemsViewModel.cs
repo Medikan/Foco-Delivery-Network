@@ -32,12 +32,12 @@ namespace Foco_Delivery_Network.ViewModels
             Items = new ObservableCollection<Delivery>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            //MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            //{
-            //    var newItem = item as Item;
-            //    Items.Add(newItem);
-            //    await DataStore.AddItemAsync(newItem);
-            //});
+            MessagingCenter.Subscribe<NewItemPage, Delivery>(this, "AddDelivery", async (obj, delivery) =>
+            {
+                var newDelivery = delivery as Delivery;
+                Items.Add(newDelivery);
+                await DataStore.AddItemAsync(newDelivery);
+            });
         }
 
         protected virtual async Task ExecuteLoadItemsCommand()

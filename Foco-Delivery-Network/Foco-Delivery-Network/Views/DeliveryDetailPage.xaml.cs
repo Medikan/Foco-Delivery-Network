@@ -83,6 +83,7 @@ namespace Foco_Delivery_Network.Views
             var delivery = viewModel.Delivery;
 
             delivery.TakenBySource = App.CurrentUser.Id;
+            delivery.IsAccepted = true;
 
             await viewModel.Update(delivery);
             ShowButtons();
@@ -98,6 +99,7 @@ namespace Foco_Delivery_Network.Views
             var delivery = viewModel.Delivery;
 
             delivery.TakenBySource = null;
+            delivery.IsAccepted = false;
             delivery.IsDelivered = false;
 
             await viewModel.Update(delivery);

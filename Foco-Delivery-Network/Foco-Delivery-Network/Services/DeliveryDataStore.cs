@@ -22,7 +22,12 @@ namespace Foco_Delivery_Network.Services
 
         public async Task<bool> AddItemAsync(Delivery item)
         {
-            throw new NotImplementedException();
+            await CrossCloudFirestore.Current
+                                     .Instance
+                                     .GetCollection(Delivery.CollectionPath)
+                                     .AddDocumentAsync(item);
+
+            return true; //TODO Update to return true on success
         }
 
         public async Task<bool> UpdateItemAsync(Delivery item)
@@ -71,7 +76,7 @@ namespace Foco_Delivery_Network.Services
 
             foreach (var delivery in deliveryList)
             {
-                if (delivery.TakenBySource != null)
+                if (!string.IsNullOrEmpty(delivery.TakenBySource))
                     delivery.TakenBy = await Users.GetItemAsync(delivery.TakenBySource) ?? null;
             }
 

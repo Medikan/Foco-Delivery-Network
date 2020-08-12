@@ -11,6 +11,8 @@ namespace Foco_Delivery_Network.Models
     {
         public static string CollectionPath = "deliveries";
 
+        private DeliveryStatusEnum _defaultEnum;
+
         [Id]
         public string Id { get; set; }
         [MapTo("minInfo")]
@@ -26,10 +28,11 @@ namespace Foco_Delivery_Network.Models
         [MapTo("isDelivered")]
         public bool IsDelivered { get; set; }
         [MapTo("takenBy")]
-        public string TakenBySource { get; set; }
+        public string TakenBySource { get; set; }        
         public User TakenBy { get; set; }
-        public DeliveryStatusEnum Status { 
-            get 
+        public DeliveryStatusEnum Status
+        {
+            get
             {
                 if (!string.IsNullOrEmpty(TakenBySource) && !IsAccepted && !IsDelivered)
                     return DeliveryStatusEnum.PendingAcceptance;
@@ -38,7 +41,11 @@ namespace Foco_Delivery_Network.Models
                 else if (!string.IsNullOrEmpty(TakenBySource) && IsAccepted && IsDelivered)
                     return DeliveryStatusEnum.Completed;
                 return DeliveryStatusEnum.PendingAssignment;
-            } 
+            }
+            set
+            {
+                _defaultEnum = value;
+            }
         }
     }
 }

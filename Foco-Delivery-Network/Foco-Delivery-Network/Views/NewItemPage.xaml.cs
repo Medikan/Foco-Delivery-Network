@@ -13,16 +13,16 @@ namespace Foco_Delivery_Network.Views
     [DesignTimeVisible(false)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Delivery Delivery { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            Delivery = new Delivery
             {
-                Text = "Item name",
-                Description = "This is an item description."
+                MinInfo = "Brief description all users will see",
+                FullInfo = "Longer description that only the assigned user will see"
             };
 
             BindingContext = this;
@@ -30,7 +30,7 @@ namespace Foco_Delivery_Network.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Item);
+            MessagingCenter.Send(this, "AddDelivery", Delivery);
             await Navigation.PopModalAsync();
         }
 
