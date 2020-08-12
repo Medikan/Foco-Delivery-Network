@@ -13,30 +13,32 @@ namespace Foco_Delivery_Network.Models
 
         [Id]
         public string Id { get; set; }
-        [MapTo("address")]
-        public string Address { get; set; }
-        [MapTo("city")]
-        public string City { get; set; }
-        [MapTo("comments")]
-        public string Comments { get; set; }
+        [MapTo("minInfo")]
+        public string MinInfo { get; set; }
+        [MapTo("fullInfo")]
+        public string FullInfo { get; set; }
         [ServerTimestamp(CanReplace = false)]
         public Timestamp CreatedOn { get; set; }
-        [MapTo("email")]
-        public string Email { get; set; }
+        [ServerTimestamp(CanReplace = true)]
+        public Timestamp AssignedOn { get; set; }
+        [MapTo("isAccepted")]
+        public bool IsAccepted { get; set; }
         [MapTo("isDelivered")]
         public bool IsDelivered { get; set; }
-        [MapTo("items")]
-        public string Items { get; set; }
-        [MapTo("name")]
-        public string Name { get; set; }
-        [MapTo("phone")]
-        public string Phone { get; set; }
-        [MapTo("state")]
-        public string State { get; set; }
         [MapTo("takenBy")]
         public string TakenBySource { get; set; }
         public User TakenBy { get; set; }
-        [MapTo("zip")]
-        public string Zip { get; set; }
+        public DeliveryStatusEnum Status { 
+            get 
+            {
+                if (!string.IsNullOrEmpty(TakenBySource) && !IsAccepted && !IsDelivered)
+                    return DeliveryStatusEnum.PendingAcceptance;
+                else if (!string.IsNullOrEmpty(TakenBySource) && IsAccepted && !IsDelivered)
+                    return DeliveryStatusEnum.Accepted;
+                else if (!string.IsNullOrEmpty(TakenBySource) && IsAccepted && IsDelivered)
+                    return DeliveryStatusEnum.Completed;
+                return DeliveryStatusEnum.PendingAssignment;
+            } 
+        }
     }
 }

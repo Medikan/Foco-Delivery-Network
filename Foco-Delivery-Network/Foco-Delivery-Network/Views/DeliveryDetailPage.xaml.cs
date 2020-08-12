@@ -44,8 +44,8 @@ namespace Foco_Delivery_Network.Views
 
             var delivery = new Delivery
             {
-                Name = "Placeholder Name",
-                Comments = "Placeholder Comments."
+                MinInfo = "Placeholder Name",
+                FullInfo = "Placeholder Comments."
             };
 
             viewModel = new DeliveryDetailViewModel(delivery);
@@ -60,16 +60,16 @@ namespace Foco_Delivery_Network.Views
             unassignBtn.IsVisible = false;
             completeBtn.IsVisible = false;
 
-            if (viewModel.Delivery.TakenBySource == null)
+            if (viewModel.Delivery.Status == DeliveryStatusEnum.PendingAssignment)
             {
                 takeBtn.IsVisible = true;
             }
-            else if (viewModel.Delivery.TakenBySource != null && !viewModel.Delivery.IsDelivered)
+            else if (viewModel.Delivery.Status == DeliveryStatusEnum.Accepted)
             {
                 unassignBtn.IsVisible = true;
                 completeBtn.IsVisible = true;
             }
-            else if (viewModel.Delivery.TakenBySource != null && viewModel.Delivery.IsDelivered)
+            else if (viewModel.Delivery.Status == DeliveryStatusEnum.Completed)
             {
                 unassignBtn.IsVisible = true;
             }
