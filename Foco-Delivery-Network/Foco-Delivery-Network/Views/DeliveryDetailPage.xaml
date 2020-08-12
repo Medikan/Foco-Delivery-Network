@@ -9,9 +9,9 @@
     <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadDeliveryInfoCommand}">
         <StackLayout Spacing="20" Padding="15">
             <Label Text="Name:" FontSize="Medium" />
-            <Label Text="{Binding Delivery.Name}" d:Text="Name" FontSize="Small"/>
+            <Label Text="{Binding Delivery.MinInfo}" d:Text="Name" FontSize="Small"/>
             <Label Text="Comments:" FontSize="Medium" />
-            <Label Text="{Binding Delivery.Comments}" d:Text="Comments" FontSize="Small"/>
+            <Label Text="{Binding Delivery.FullInfo}" d:Text="Comments" FontSize="Small"/>
             <Button x:Name="take_btn"  Text="Take" Clicked="TakeDelivery" IsVisible="false"/>
             <Button x:Name="assign_btn" Text="Assign" Clicked="AssignDelivery" IsVisible="false"/>
             <Button x:Name="unassign_btn" Text="Put Back" Clicked="UnassignDelivery" IsVisible="false"/>
