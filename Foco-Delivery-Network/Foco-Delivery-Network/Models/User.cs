@@ -20,7 +20,7 @@ namespace Foco_Delivery_Network.Models
             } 
         }
         [MapTo("role")]
-        public int Role { get; set; } //TODO: change to enum, need to convert int to enum
+        public int Role { get; set; }
         [MapTo("isOnline")]
         public bool IsOnline { get; set; } 
         public bool IsAvailable { get; set; } 
